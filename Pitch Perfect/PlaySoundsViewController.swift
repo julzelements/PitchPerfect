@@ -54,7 +54,6 @@ class PlaySoundsViewController: UIViewController {
   func playAudioWithDelay() {
     let delayNode = AVAudioUnitDelay()
     delayNode.delayTime = 1
-    audioEngine.attachNode(delayNode)
     playAudioWithEffectNode(delayNode)
   }
   

@@ -156,56 +156,39 @@
                                     <action selector="playDarthVaderAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="gvg-Dp-HUD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-mJ-tS6">
-                                <rect key="frame" x="20" y="285" width="39" height="30"/>
-                                <state key="normal" title="Delay"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-mJ-tS6">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <state key="normal" image="Delay"/>
                                 <connections>
                                     <action selector="playDelay:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="XbD-Oe-KNZ"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="16F-G4-e6j">
-                                <rect key="frame" x="65" y="285" width="470" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="iRz-x9-AW4"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="iRz-x9-AW4"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="delaySliderChanged:" destination="Imz-f1-vAZ" eventType="valueChanged" id="3u4-ty-GXK"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.82319253680000004" green="0.93917155269999997" blue="0.99961781500000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5Co-mJ-tS6" firstAttribute="leading" secondItem="jf6-7V-SmJ" secondAttribute="leading" id="0lA-cs-EGz"/>
                             <constraint firstItem="jf6-7V-SmJ" firstAttribute="leading" secondItem="ujV-lx-gfb" secondAttribute="leading" id="1bj-YQ-MCY"/>
                             <constraint firstItem="GEr-Vg-zbE" firstAttribute="trailing" secondItem="wRm-lA-dYH" secondAttribute="trailing" id="3ue-q1-5J1"/>
-                            <constraint firstItem="5Co-mJ-tS6" firstAttribute="top" secondItem="16F-G4-e6j" secondAttribute="top" id="4jK-cU-ks9"/>
                             <constraint firstItem="5Co-mJ-tS6" firstAttribute="centerY" secondItem="Pls-ga-Pdf" secondAttribute="centerY" id="97Q-54-iSx"/>
                             <constraint firstItem="jf6-7V-SmJ" firstAttribute="leading" secondItem="Pls-ga-Pdf" secondAttribute="leadingMargin" id="BTT-t7-pag"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="16F-G4-e6j" secondAttribute="trailing" id="FJR-Nz-msw"/>
+                            <constraint firstItem="5Co-mJ-tS6" firstAttribute="centerX" secondItem="fYU-d3-NiT" secondAttribute="centerX" id="CIH-uS-hOh"/>
+                            <constraint firstItem="5Co-mJ-tS6" firstAttribute="leading" secondItem="Pls-ga-Pdf" secondAttribute="leading" constant="201" id="El1-5i-qyq"/>
                             <constraint firstAttribute="bottom" secondItem="ujV-lx-gfb" secondAttribute="bottom" constant="20" symbolic="YES" id="JpI-W9-Ayy"/>
                             <constraint firstItem="fYU-d3-NiT" firstAttribute="centerX" secondItem="Pls-ga-Pdf" secondAttribute="centerX" id="Kwq-d0-SJZ"/>
                             <constraint firstItem="fYU-d3-NiT" firstAttribute="bottom" secondItem="ujV-lx-gfb" secondAttribute="bottom" id="MBz-YW-Zdj"/>
-                            <constraint firstItem="16F-G4-e6j" firstAttribute="top" secondItem="5Co-mJ-tS6" secondAttribute="top" id="fEy-Bn-Hsw"/>
                             <constraint firstItem="jf6-7V-SmJ" firstAttribute="top" secondItem="yjw-MB-OW7" secondAttribute="bottom" constant="8" symbolic="YES" id="j2l-5d-Yew"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="16F-G4-e6j" secondAttribute="trailing" id="kPv-dr-9W1"/>
                             <constraint firstItem="wRm-lA-dYH" firstAttribute="top" secondItem="jf6-7V-SmJ" secondAttribute="top" id="mXA-sn-Bqh"/>
-                            <constraint firstItem="16F-G4-e6j" firstAttribute="centerX" secondItem="fYU-d3-NiT" secondAttribute="centerX" id="od0-Gy-egh"/>
                             <constraint firstItem="GEr-Vg-zbE" firstAttribute="bottom" secondItem="fYU-d3-NiT" secondAttribute="bottom" id="rqI-Jf-hIv"/>
                             <constraint firstItem="5Co-mJ-tS6" firstAttribute="centerY" secondItem="Pls-ga-Pdf" secondAttribute="centerY" id="rqs-Ha-A8G"/>
-                            <constraint firstItem="16F-G4-e6j" firstAttribute="leading" secondItem="5Co-mJ-tS6" secondAttribute="trailing" constant="8" symbolic="YES" id="tHl-YH-vkU"/>
                             <constraint firstItem="wRm-lA-dYH" firstAttribute="trailing" secondItem="Pls-ga-Pdf" secondAttribute="trailingMargin" id="ueQ-gx-r1a"/>
+                            <constraint firstItem="5Co-mJ-tS6" firstAttribute="centerY" secondItem="Pls-ga-Pdf" secondAttribute="centerY" id="yXc-mN-BgS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4jK-cU-ks9"/>
+                                <exclude reference="0lA-cs-EGz"/>
+                                <exclude reference="97Q-54-iSx"/>
+                                <exclude reference="El1-5i-qyq"/>
                                 <exclude reference="rqs-Ha-A8G"/>
-                                <exclude reference="FJR-Nz-msw"/>
-                                <exclude reference="kPv-dr-9W1"/>
                             </mask>
                         </variation>
                     </view>
@@ -235,6 +218,7 @@
     </scenes>
     <resources>
         <image name="DarthVader" width="200" height="200"/>
+        <image name="Delay" width="200" height="200"/>
         <image name="Microphone" width="100" height="100"/>
         <image name="Pause" width="100" height="100"/>
         <image name="Rabbit" width="200" height="200"/>
