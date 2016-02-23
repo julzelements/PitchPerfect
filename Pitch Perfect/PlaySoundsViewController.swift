@@ -26,8 +26,7 @@ class PlaySoundsViewController: UIViewController {
     audioPlayer = try! AVAudioPlayer(contentsOfURL: recievedAudio.filePathURL)
     audioEngine = AVAudioEngine()
     try! audioFile = AVAudioFile(forReading: recievedAudio.filePathURL)
-    //Initialize the delay node
-//    delayNode = AVAudioUnitDelay()
+
     
   }
   
@@ -53,48 +52,16 @@ class PlaySoundsViewController: UIViewController {
   }
   
   func playAudioWithDelay() {
-    audioPlayer.stop()
-    audioEngine.stop()
-    audioEngine.reset()
-    
-    let audioPlayerNode = AVAudioPlayerNode()
-    audioEngine.attachNode(audioPlayerNode)
-    
     let delayNode = AVAudioUnitDelay()
     delayNode.delayTime = 1
     audioEngine.attachNode(delayNode)
-    
-    audioEngine.connect(audioPlayerNode, to: delayNode, format: nil)
-    audioEngine.connect(delayNode, to: audioEngine.outputNode, format: nil)
-    
-    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-    try! audioEngine.start()
-    
-    audioPlayerNode.play()
+    playAudioWithEffectNode(delayNode)
   }
   
   func playAudioWithVariablePitch(pitch: Float){
-//    audioPlayer.stop()
-//    audioEngine.stop()
-//    audioEngine.reset()
-//    
-//    let audioPlayerNode = AVAudioPlayerNode()
-//    audioEngine.attachNode(audioPlayerNode)
-    
     let changePitchEffect = AVAudioUnitTimePitch()
     changePitchEffect.pitch = pitch
-//    audioEngine.attachNode(changePitchEffect)
-//
-//    audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-//    audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
-//    
-//    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-//    try! audioEngine.start()
-//    
-//    audioPlayerNode.play()
-    
     playAudioWithEffectNode(changePitchEffect)
-//    return changePitchEffect
   }
   
   @IBAction func playDarthVaderAudio(sender: UIButton) {
@@ -116,10 +83,6 @@ class PlaySoundsViewController: UIViewController {
     playAudioWithDelay()
   }
   
-  @IBAction func delaySliderChanged(sender: UISlider) {
-    delayNode.delayTime = Double(sender.value) * Double(2)
-  }
-  
   func playAudioWithEffectNode(effectNode: AVAudioNode) {
     audioPlayer.stop()
     audioEngine.stop()
@@ -127,10 +90,7 @@ class PlaySoundsViewController: UIViewController {
     
     let audioPlayerNode = AVAudioPlayerNode()
     audioEngine.attachNode(audioPlayerNode)
-    
-
     audioEngine.attachNode(effectNode)
-    
     audioEngine.connect(audioPlayerNode, to: effectNode, format: nil)
     audioEngine.connect(effectNode, to: audioEngine.outputNode, format: nil)
     
