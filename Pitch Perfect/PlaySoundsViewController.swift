@@ -27,7 +27,7 @@ class PlaySoundsViewController: UIViewController {
     audioEngine = AVAudioEngine()
     try! audioFile = AVAudioFile(forReading: recievedAudio.filePathURL)
     //Initialize the delay node
-    delayNode = AVAudioUnitDelay()
+//    delayNode = AVAudioUnitDelay()
     
   }
   
@@ -60,7 +60,7 @@ class PlaySoundsViewController: UIViewController {
     let audioPlayerNode = AVAudioPlayerNode()
     audioEngine.attachNode(audioPlayerNode)
     
-//    let delayNode = AVAudioUnitDelay()
+    let delayNode = AVAudioUnitDelay()
     delayNode.delayTime = 1
     audioEngine.attachNode(delayNode)
     
@@ -73,25 +73,27 @@ class PlaySoundsViewController: UIViewController {
     audioPlayerNode.play()
   }
   
-  func playAudioWithVariablePitch(pitch: Float) {
-    audioPlayer.stop()
-    audioEngine.stop()
-    audioEngine.reset()
-    
-    let audioPlayerNode = AVAudioPlayerNode()
-    audioEngine.attachNode(audioPlayerNode)
+  func playAudioWithVariablePitch(pitch: Float) -> AVAudioNode {
+//    audioPlayer.stop()
+//    audioEngine.stop()
+//    audioEngine.reset()
+//    
+//    let audioPlayerNode = AVAudioPlayerNode()
+//    audioEngine.attachNode(audioPlayerNode)
     
     let changePitchEffect = AVAudioUnitTimePitch()
     changePitchEffect.pitch = pitch
     audioEngine.attachNode(changePitchEffect)
+//    
+//    audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+//    audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+//    
+//    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+//    try! audioEngine.start()
+//    
+//    audioPlayerNode.play()
     
-    audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-    audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
-    
-    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-    try! audioEngine.start()
-    
-    audioPlayerNode.play()
+    return changePitchEffect
   }
   
   @IBAction func playDarthVaderAudio(sender: UIButton) {
@@ -115,7 +117,26 @@ class PlaySoundsViewController: UIViewController {
   
   @IBAction func delaySliderChanged(sender: UISlider) {
     delayNode.delayTime = Double(sender.value) * Double(2)
+  }
+  
+  func playAudioWithEffectNode(effectNode: AVAudioNode) {
+    audioPlayer.stop()
+    audioEngine.stop()
+    audioEngine.reset()
     
+    let audioPlayerNode = AVAudioPlayerNode()
+    audioEngine.attachNode(audioPlayerNode)
+    
+
+    audioEngine.attachNode(effectNode)
+    
+    audioEngine.connect(audioPlayerNode, to: effectNode, format: nil)
+    audioEngine.connect(effectNode, to: audioEngine.outputNode, format: nil)
+    
+    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+    try! audioEngine.start()
+    
+    audioPlayerNode.play()
   }
   
 }
