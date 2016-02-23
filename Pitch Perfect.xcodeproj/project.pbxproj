@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3AA9711C7598AE0029DA43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3AA9701C7598AE0029DA43 /* Assets.xcassets */; };
 		2B423C801C72F94C00D75C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B423C7F1C72F94C00D75C33 /* AppDelegate.swift */; };
-		2B423C821C72F94C00D75C33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B423C811C72F94C00D75C33 /* ViewController.swift */; };
+		2B423C821C72F94C00D75C33 /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B423C811C72F94C00D75C33 /* RecordSoundsViewController.swift */; };
 		2B423C851C72F94C00D75C33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B423C831C72F94C00D75C33 /* Main.storyboard */; };
-		2B423C871C72F94C00D75C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B423C861C72F94C00D75C33 /* Assets.xcassets */; };
 		2B423C8A1C72F94C00D75C33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B423C881C72F94C00D75C33 /* LaunchScreen.storyboard */; };
+		2B7E68DD1C733658004D31A6 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E68DC1C733658004D31A6 /* PlaySoundsViewController.swift */; };
+		2BF63F131C745C22007C8698 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF63F121C745C22007C8698 /* movie_quote.mp3 */; };
+		2BF63F161C747ED2007C8698 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF63F151C747ED2007C8698 /* RecordedAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B3AA9701C7598AE0029DA43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B423C7C1C72F94C00D75C33 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B423C7F1C72F94C00D75C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B423C811C72F94C00D75C33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2B423C811C72F94C00D75C33 /* RecordSoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundsViewController.swift; sourceTree = "<group>"; };
 		2B423C841C72F94C00D75C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2B423C861C72F94C00D75C33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B423C891C72F94C00D75C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B423C8B1C72F94C00D75C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B7E68DC1C733658004D31A6 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
+		2BF63F121C745C22007C8698 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
+		2BF63F141C747544007C8698 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		2BF63F151C747ED2007C8698 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +61,16 @@
 		2B423C7E1C72F94C00D75C33 /* Pitch Perfect */ = {
 			isa = PBXGroup;
 			children = (
+				2BF63F121C745C22007C8698 /* movie_quote.mp3 */,
 				2B423C7F1C72F94C00D75C33 /* AppDelegate.swift */,
-				2B423C811C72F94C00D75C33 /* ViewController.swift */,
+				2B423C811C72F94C00D75C33 /* RecordSoundsViewController.swift */,
 				2B423C831C72F94C00D75C33 /* Main.storyboard */,
-				2B423C861C72F94C00D75C33 /* Assets.xcassets */,
+				2B3AA9701C7598AE0029DA43 /* Assets.xcassets */,
+				2BF63F151C747ED2007C8698 /* RecordedAudio.swift */,
+				2B7E68DC1C733658004D31A6 /* PlaySoundsViewController.swift */,
 				2B423C881C72F94C00D75C33 /* LaunchScreen.storyboard */,
 				2B423C8B1C72F94C00D75C33 /* Info.plist */,
+				2BF63F141C747544007C8698 /* MyPlayground.playground */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -124,7 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B423C8A1C72F94C00D75C33 /* LaunchScreen.storyboard in Resources */,
-				2B423C871C72F94C00D75C33 /* Assets.xcassets in Resources */,
+				2BF63F131C745C22007C8698 /* movie_quote.mp3 in Resources */,
+				2B3AA9711C7598AE0029DA43 /* Assets.xcassets in Resources */,
 				2B423C851C72F94C00D75C33 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +148,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B423C821C72F94C00D75C33 /* ViewController.swift in Sources */,
+				2BF63F161C747ED2007C8698 /* RecordedAudio.swift in Sources */,
+				2B423C821C72F94C00D75C33 /* RecordSoundsViewController.swift in Sources */,
+				2B7E68DD1C733658004D31A6 /* PlaySoundsViewController.swift in Sources */,
 				2B423C801C72F94C00D75C33 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +266,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.julzelements.Pitch-Perfect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -263,6 +278,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.julzelements.Pitch-Perfect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -285,6 +301,7 @@
 				2B423C901C72F94C00D75C33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
