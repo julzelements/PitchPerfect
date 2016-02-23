@@ -14,6 +14,7 @@ class PlaySoundsViewController: UIViewController {
   var recievedAudio: RecordedAudio!
   var audioEngine: AVAudioEngine!
   var audioFile: AVAudioFile!
+  var delayNode: AVAudioUnitDelay!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,6 +26,9 @@ class PlaySoundsViewController: UIViewController {
     audioPlayer = try! AVAudioPlayer(contentsOfURL: recievedAudio.filePathURL)
     audioEngine = AVAudioEngine()
     try! audioFile = AVAudioFile(forReading: recievedAudio.filePathURL)
+    //Initialize the delay node
+    delayNode = AVAudioUnitDelay()
+    
   }
   
   //Note to reviewer: I put the constants in two structs so they are all in the one place.
@@ -56,7 +60,7 @@ class PlaySoundsViewController: UIViewController {
     let audioPlayerNode = AVAudioPlayerNode()
     audioEngine.attachNode(audioPlayerNode)
     
-    let delayNode = AVAudioUnitDelay()
+//    let delayNode = AVAudioUnitDelay()
     delayNode.delayTime = 1
     audioEngine.attachNode(delayNode)
     
@@ -109,6 +113,10 @@ class PlaySoundsViewController: UIViewController {
     playAudioWithDelay()
   }
   
+  @IBAction func delaySliderChanged(sender: UISlider) {
+    delayNode.delayTime = Double(sender.value) * Double(2)
+    
+  }
   
 }
 
