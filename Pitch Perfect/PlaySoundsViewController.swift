@@ -73,7 +73,7 @@ class PlaySoundsViewController: UIViewController {
     audioPlayerNode.play()
   }
   
-  func playAudioWithVariablePitch(pitch: Float) -> AVAudioNode {
+  func playAudioWithVariablePitch(pitch: Float){
 //    audioPlayer.stop()
 //    audioEngine.stop()
 //    audioEngine.reset()
@@ -83,8 +83,8 @@ class PlaySoundsViewController: UIViewController {
     
     let changePitchEffect = AVAudioUnitTimePitch()
     changePitchEffect.pitch = pitch
-    audioEngine.attachNode(changePitchEffect)
-//    
+//    audioEngine.attachNode(changePitchEffect)
+//
 //    audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
 //    audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
 //    
@@ -93,7 +93,8 @@ class PlaySoundsViewController: UIViewController {
 //    
 //    audioPlayerNode.play()
     
-    return changePitchEffect
+    playAudioWithEffectNode(changePitchEffect)
+//    return changePitchEffect
   }
   
   @IBAction func playDarthVaderAudio(sender: UIButton) {
