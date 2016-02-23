@@ -26,22 +26,18 @@ class PlaySoundsViewController: UIViewController {
     audioPlayer = try! AVAudioPlayer(contentsOfURL: recievedAudio.filePathURL)
     audioEngine = AVAudioEngine()
     try! audioFile = AVAudioFile(forReading: recievedAudio.filePathURL)
-
-    
   }
   
   //Note to reviewer: I put the constants in two structs so they are all in the one place.
-  struct playingSpeeds {
+  struct audioStruct {
     let fast: Float = 2.0
     let slow: Float = 0.5
-  }
-  struct playingPitch {
-    let darthVader: Float = -500
+    let darthVader: Float = -1000
     let chipmunk: Float = 1000
+    let delay: Double = 1
   }
   
-  let speed = playingSpeeds()
-  let pitch = playingPitch()
+let audioConstant = audioStruct()
   
   func playAtSpeed(speed: Float) {
     audioPlayer.stop()
@@ -51,9 +47,9 @@ class PlaySoundsViewController: UIViewController {
     audioPlayer.play()
   }
   
-  func playAudioWithDelay() {
+  func playAudioWithDelay(delay: Double) {
     let delayNode = AVAudioUnitDelay()
-    delayNode.delayTime = 1
+    delayNode.delayTime = delay
     playAudioWithEffectNode(delayNode)
   }
   
@@ -63,26 +59,8 @@ class PlaySoundsViewController: UIViewController {
     playAudioWithEffectNode(changePitchEffect)
   }
   
-  @IBAction func playDarthVaderAudio(sender: UIButton) {
-    playAudioWithVariablePitch(pitch.darthVader)
-  }
-  @IBAction func playChipMunkAudio(sender: UIButton) {
-    playAudioWithVariablePitch(pitch.chipmunk)
-  }
-  @IBAction func playSlow(sender: UIButton) {
-    playAtSpeed(speed.slow)
-  }
-  @IBAction func playFast(sender: UIButton) {
-    playAtSpeed(speed.fast)
-  }
-  @IBAction func stopAudio(sender: UIButton) {
-    audioPlayer.stop()
-  }
-  @IBAction func playDelay(sender: UIButton) {
-    playAudioWithDelay()
-  }
-  
-  func playAudioWithEffectNode(effectNode: AVAudioNode) {
+  //This is a modular function that can be used to play various audioNodes
+    func playAudioWithEffectNode(effectNode: AVAudioNode) {
     audioPlayer.stop()
     audioEngine.stop()
     audioEngine.reset()
@@ -97,6 +75,25 @@ class PlaySoundsViewController: UIViewController {
     try! audioEngine.start()
     
     audioPlayerNode.play()
+  }
+  
+  @IBAction func playDarthVaderAudio(sender: UIButton) {
+    playAudioWithVariablePitch(audioConstant.darthVader)
+  }
+  @IBAction func playChipMunkAudio(sender: UIButton) {
+    playAudioWithVariablePitch(audioConstant.chipmunk)
+  }
+  @IBAction func playSlow(sender: UIButton) {
+    playAtSpeed(audioConstant.slow)
+  }
+  @IBAction func playFast(sender: UIButton) {
+    playAtSpeed(audioConstant.fast)
+  }
+  @IBAction func stopAudio(sender: UIButton) {
+    audioPlayer.stop()
+  }
+  @IBAction func playDelay(sender: UIButton) {
+    playAudioWithDelay(audioConstant.delay)
   }
   
 }
