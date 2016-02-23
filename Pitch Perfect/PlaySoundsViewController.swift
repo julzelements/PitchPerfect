@@ -48,6 +48,27 @@ class PlaySoundsViewController: UIViewController {
     audioPlayer.play()
   }
   
+  func playAudioWithDelay() {
+    audioPlayer.stop()
+    audioEngine.stop()
+    audioEngine.reset()
+    
+    let audioPlayerNode = AVAudioPlayerNode()
+    audioEngine.attachNode(audioPlayerNode)
+    
+    let delayNode = AVAudioUnitDelay()
+    delayNode.delayTime = 1
+    audioEngine.attachNode(delayNode)
+    
+    audioEngine.connect(audioPlayerNode, to: delayNode, format: nil)
+    audioEngine.connect(delayNode, to: audioEngine.outputNode, format: nil)
+    
+    audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+    try! audioEngine.start()
+    
+    audioPlayerNode.play()
+  }
+  
   func playAudioWithVariablePitch(pitch: Float) {
     audioPlayer.stop()
     audioEngine.stop()
@@ -83,6 +104,9 @@ class PlaySoundsViewController: UIViewController {
   }
   @IBAction func stopAudio(sender: UIButton) {
     audioPlayer.stop()
+  }
+  @IBAction func playDelay(sender: UIButton) {
+    playAudioWithDelay()
   }
   
   

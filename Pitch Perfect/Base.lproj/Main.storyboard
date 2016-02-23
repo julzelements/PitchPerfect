@@ -156,6 +156,13 @@
                                     <action selector="playDarthVaderAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="gvg-Dp-HUD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-mJ-tS6">
+                                <rect key="frame" x="281" y="285" width="39" height="30"/>
+                                <state key="normal" title="Delay"/>
+                                <connections>
+                                    <action selector="playDelay:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="XbD-Oe-KNZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.82319253680000004" green="0.93917155269999997" blue="0.99961781500000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
