@@ -37,11 +37,16 @@ class PlaySoundsViewController: UIViewController {
     let delay: Double = 1
   }
   
-let audioConstant = audioStruct()
+  let audioConstant = audioStruct()
   
-  func playAtSpeed(speed: Float) {
+  func stopAll() {
     audioPlayer.stop()
     audioEngine.stop()
+    audioEngine.reset()
+  }
+  
+  func playAtSpeed(speed: Float) {
+    stopAll()
     audioPlayer.enableRate = true
     audioPlayer.rate = speed
     audioPlayer.play()
@@ -60,11 +65,8 @@ let audioConstant = audioStruct()
   }
   
   //This is a modular function that can be used to play various audioNodes
-    func playAudioWithEffectNode(effectNode: AVAudioNode) {
-    audioPlayer.stop()
-    audioEngine.stop()
-    audioEngine.reset()
-    
+  func playAudioWithEffectNode(effectNode: AVAudioNode) {
+    stopAll()
     let audioPlayerNode = AVAudioPlayerNode()
     audioEngine.attachNode(audioPlayerNode)
     audioEngine.attachNode(effectNode)
@@ -90,7 +92,7 @@ let audioConstant = audioStruct()
     playAtSpeed(audioConstant.fast)
   }
   @IBAction func stopAudio(sender: UIButton) {
-    audioPlayer.stop()
+    stopAll()
   }
   @IBAction func playDelay(sender: UIButton) {
     playAudioWithDelay(audioConstant.delay)
