@@ -13,7 +13,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   
   var audioRecorder:AVAudioRecorder!
   var recordedAudio:RecordedAudio!
-  var paused: Bool = false
+  var recordingIsPaused: Bool = false
   
   enum DisplayState {
     case notRecording
@@ -48,7 +48,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   @IBOutlet weak var pauseButton: UIButton!
   
   @IBAction func recordAudio(sender: UIButton) {
-  
+    if recordingIsPaused == false {
     let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
     let recordingName = "my_audio.wav"
     let pathArray = [dirPath, recordingName]
@@ -62,6 +62,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     audioRecorder.prepareToRecord()
     audioRecorder.record()
     updateDisplay(.recording)
+    } else {
+      audioRecorder.record()
+      recordingIsPaused = false
+      updateDisplay(.recording)
+    }
   }
   
   func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -84,6 +89,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   @IBAction func pauseRecording(sender: UIButton) {
     audioRecorder.pause()
     updateDisplay(.paused)
+    recordingIsPaused = true
   }
   
   @IBAction func stopRecording(sender: UIButton) {
