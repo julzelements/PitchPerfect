@@ -11,16 +11,39 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   
+
+  
   var audioRecorder:AVAudioRecorder!
   var recordedAudio:RecordedAudio!
   var userIsInTheMiddleOfRecording: Bool = false
-
+  var display: DisplayState!
   
+  
+  enum DisplayState {
+    case notRecording
+    case recording
+    case paused
+        }
+  
+  func updateDisplay(displayState: DisplayState) {
+      switch displayState {
+      case .notRecording:
+        recordingInProgress.hidden = false
+        recordingInProgress.text = "Tap to Record"
+        stopButton.hidden = true
+        pauseButton.hidden = true
+      case .recording:
+        recordingInProgress.text = "Recording in Progress..."
+        pauseButton.hidden = false
+        stopButton.hidden = false
+      case .paused:
+        recordingInProgress.text = "Paused Tap to Resume Recording"
+        pauseButton.hidden = true
+      }
+  }
+
   override func viewWillAppear(animated: Bool) {
-    recordingInProgress.hidden = false
-    recordingInProgress.text = "Tap to Record"
-    stopButton.hidden = true
-    pauseButton.hidden = true
+  updateDisplay(.notRecording)
   }
 
   @IBOutlet weak var recordButton: UIButton!
@@ -45,18 +68,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
       audioRecorder.meteringEnabled = true
       audioRecorder.prepareToRecord()
       audioRecorder.record()
-      
       userIsInTheMiddleOfRecording = true
-      recordingInProgress.text = "Recording in Progress..."
-      pauseButton.hidden = false
-      stopButton.hidden = false
       
     } else if userIsInTheMiddleOfRecording == true {
       audioRecorder.record()
-      recordingInProgress.text = "Recording in Progress..."
-      pauseButton.hidden = false
-      stopButton.hidden = false
     }
+    updateDisplay(.recording)
   }
   
   func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -79,8 +96,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   @IBAction func pauseRecording(sender: UIButton) {
     if userIsInTheMiddleOfRecording == true {
       audioRecorder.pause()
-      recordingInProgress.text = "Tap to Resume Recording"
-      pauseButton.hidden = true
+      updateDisplay(.paused)
     }
   }
   
@@ -90,4 +106,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     let audioSession = AVAudioSession.sharedInstance()
     try! audioSession.setActive(false)
   }
+
+
 }

@@ -28,7 +28,7 @@ class PlaySoundsViewController: UIViewController {
     try! audioFile = AVAudioFile(forReading: recievedAudio.filePathURL)
   }
   
-  //Note to reviewer: I put the constants in two structs so they are all in the one place.
+  //Note to reviewer: I put the constants in one struct so they are all in the one place.
   struct audioStruct {
     let fast: Float = 2.0
     let slow: Float = 0.5
