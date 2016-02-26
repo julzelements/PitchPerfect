@@ -142,13 +142,6 @@
                                     <action selector="stopAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="uCI-JC-6cf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujV-lx-gfb">
-                                <rect key="frame" x="20" y="380" width="200" height="200"/>
-                                <state key="normal" image="chipmunk"/>
-                                <connections>
-                                    <action selector="playChipMunkAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="dRZ-1u-hKU"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEr-Vg-zbE">
                                 <rect key="frame" x="380" y="380" width="200" height="200"/>
                                 <state key="normal" image="DarthVader"/>
@@ -161,6 +154,13 @@
                                 <state key="normal" image="Delay"/>
                                 <connections>
                                     <action selector="playDelay:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="XbD-Oe-KNZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujV-lx-gfb">
+                                <rect key="frame" x="20" y="380" width="200" height="200"/>
+                                <state key="normal" image="Chipmunk"/>
+                                <connections>
+                                    <action selector="playChipMunkAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="dRZ-1u-hKU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -217,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Chipmunk" width="200" height="200"/>
         <image name="DarthVader" width="200" height="200"/>
         <image name="Delay" width="200" height="200"/>
         <image name="Microphone" width="100" height="100"/>
@@ -224,6 +225,5 @@
         <image name="Rabbit" width="200" height="200"/>
         <image name="Snail" width="200" height="200"/>
         <image name="Stop" width="100" height="100"/>
-        <image name="chipmunk" width="200" height="200"/>
     </resources>
 </document>
