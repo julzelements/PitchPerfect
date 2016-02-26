@@ -11,68 +11,56 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   
-
-  
   var audioRecorder:AVAudioRecorder!
   var recordedAudio:RecordedAudio!
-  var userIsInTheMiddleOfRecording: Bool = false
-  var display: DisplayState!
-  
+  var paused: Bool = false
   
   enum DisplayState {
     case notRecording
     case recording
     case paused
-        }
+  }
   
   func updateDisplay(displayState: DisplayState) {
-      switch displayState {
-      case .notRecording:
-        recordingInProgress.hidden = false
-        recordingInProgress.text = "Tap to Record"
-        stopButton.hidden = true
-        pauseButton.hidden = true
-      case .recording:
-        recordingInProgress.text = "Recording in Progress..."
-        pauseButton.hidden = false
-        stopButton.hidden = false
-      case .paused:
-        recordingInProgress.text = "Paused Tap to Resume Recording"
-        pauseButton.hidden = true
-      }
+    switch displayState {
+    case .notRecording:
+      recordingInProgress.hidden = false
+      recordingInProgress.text = "Tap to Record"
+      stopButton.hidden = true
+      pauseButton.hidden = true
+    case .recording:
+      recordingInProgress.text = "Recording in Progress..."
+      pauseButton.hidden = false
+      stopButton.hidden = false
+    case .paused:
+      recordingInProgress.text = "Paused \n Tap to Resume Recording"
+      pauseButton.hidden = true
+    }
   }
-
+  
   override func viewWillAppear(animated: Bool) {
-  updateDisplay(.notRecording)
+    updateDisplay(.notRecording)
   }
-
+  
   @IBOutlet weak var recordButton: UIButton!
   @IBOutlet weak var stopButton: UIButton!
   @IBOutlet weak var recordingInProgress: UILabel!
   @IBOutlet weak var pauseButton: UIButton!
   
   @IBAction func recordAudio(sender: UIButton) {
+  
+    let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+    let recordingName = "my_audio.wav"
+    let pathArray = [dirPath, recordingName]
+    let filePath = NSURL.fileURLWithPathComponents(pathArray)
+    let session = AVAudioSession.sharedInstance()
+    try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+    try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
     
-    if userIsInTheMiddleOfRecording == false {
-      let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-      let recordingName = "my_audio.wav"
-      let pathArray = [dirPath, recordingName]
-      let filePath = NSURL.fileURLWithPathComponents(pathArray)
-      print(filePath)
-      
-      let session = AVAudioSession.sharedInstance()
-      try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-      
-      try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
-      audioRecorder.delegate = self
-      audioRecorder.meteringEnabled = true
-      audioRecorder.prepareToRecord()
-      audioRecorder.record()
-      userIsInTheMiddleOfRecording = true
-      
-    } else if userIsInTheMiddleOfRecording == true {
-      audioRecorder.record()
-    }
+    audioRecorder.delegate = self
+    audioRecorder.meteringEnabled = true
+    audioRecorder.prepareToRecord()
+    audioRecorder.record()
     updateDisplay(.recording)
   }
   
@@ -94,10 +82,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
   }
   
   @IBAction func pauseRecording(sender: UIButton) {
-    if userIsInTheMiddleOfRecording == true {
-      audioRecorder.pause()
-      updateDisplay(.paused)
-    }
+    audioRecorder.pause()
+    updateDisplay(.paused)
   }
   
   @IBAction func stopRecording(sender: UIButton) {
@@ -106,6 +92,4 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     let audioSession = AVAudioSession.sharedInstance()
     try! audioSession.setActive(false)
   }
-
-
 }
