@@ -25,7 +25,7 @@
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ILJ-b5-sTg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording in Progress..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-MF-9Lw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording in Progress..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-MF-9Lw">
                                 <rect key="frame" x="209" y="358" width="182" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,7 +158,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujV-lx-gfb">
                                 <rect key="frame" x="20" y="380" width="200" height="200"/>
-                                <state key="normal" image="Chipmunk"/>
+                                <state key="normal" image="Image"/>
                                 <connections>
                                     <action selector="playChipMunkAudio:" destination="Imz-f1-vAZ" eventType="touchUpInside" id="dRZ-1u-hKU"/>
                                 </connections>
@@ -217,9 +217,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chipmunk" width="200" height="200"/>
         <image name="DarthVader" width="200" height="200"/>
         <image name="Delay" width="200" height="200"/>
+        <image name="Image" width="200" height="200"/>
         <image name="Microphone" width="100" height="100"/>
         <image name="Pause" width="100" height="100"/>
         <image name="Rabbit" width="200" height="200"/>
